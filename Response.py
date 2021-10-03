@@ -6,7 +6,7 @@ def sample_response(input):
 
     if user_mess in ("hi", "hello", "ok"):
         return "Hi Bro :v"
-    if user_mess in ("time", "time?"):
+    if user_mess in ("time", "time?", "/time"):
         now = "Hôm nay là: " + datetime.now().strftime("%d-%m-%y, %H:%M:%S")
         return str(now)
 

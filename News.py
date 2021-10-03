@@ -5,6 +5,7 @@ from Article import Article
 
 baseUrl = "https://vnexpress.net/"
 
+
 def GetNews(limit_news = 20): # Tạo biến limit_news để lấy số lượng tin mà mình cần thôi
     s = requests.Session() # Store sesstion lại
     response = s.get(baseUrl) # Thực hiện Get request
@@ -18,3 +19,4 @@ def GetNews(limit_news = 20): # Tạo biến limit_news để lấy số lượn
         for x in range(len(title)): # serialize object này lại thành json để lấy dữ liệu dễ dàng hơn
             listArticle.append(json.dumps(Article(title[x]['title'], title[x]['href'], description[x].text).__dict__, ensure_ascii=False))
     return listArticle
+
