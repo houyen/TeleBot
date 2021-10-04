@@ -24,19 +24,6 @@ logging.basicConfig(level=logging.INFO,
 
 #bodyBODYbody
 print("Bot Starting....")
-def start(update_obj, context):
-  # send the question, and show the keyboard markup (suggested answers)
-  update_obj.message.reply_text("Hello there, do you want to using me? (Yes/No)",
-                                reply_markup=telegram.ReplyKeyboardMarkup([['Yes', 'No']], one_time_keyboard=True)
-                                )
-  return welcome
-# in the WELCOME state, check if the user wants to answer a question
-def welcome(update_obj, context):
-    if update_obj.message.text.lower() in ['yes', 'y']:
-        return help_command
-    else:
-        # go to the CANCEL state
-        return cancel
 
 def hello_command(update: Update, context: CallbackContext) -> None:
   update.message.reply_text(f'Chào {update.effective_user.first_name}')
@@ -114,7 +101,7 @@ def main():
 
   updater = Updater(keys.API_KEY, use_context=True)
   dp = updater.dispatcher
-  dp.add_handler(CommandHandler("start", start))
+
   dp.add_handler(CommandHandler("news2", news2_command))
   dp.add_handler(CommandHandler('random', random_command))
   dp.add_handler(CommandHandler("hello", hello_command))
